@@ -1,0 +1,37 @@
+[user]
+    name = Mattias Ryrlén
+    email = mattiasr@op5.com
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow
+    frag = magenta
+    old = red
+    new = green
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[push]
+    default = upstream
+[log]
+    decorate = true
+[push]
+    default = current
+[alias]
+    unmerged = !git branch -r --no-merged | grep -v HEAD | xargs -L1 git --no-pager log --pretty=tformat:'%Cgreen%d%Creset - %h by %an (%Cblue%ar%Creset)' -1
+    merged = !git branch -r --merged | grep -v HEAD | xargs -L1 git --no-pager log --pretty=tformat:'%Cgreen%d%Creset - %h by %an (%Cblue%ar%Creset)' -1
+[remote "origin"]
+    fetch = +refs/changes/*:refs/changes/origin/*
+    fetch = +refs/notes/*:refs/notes/*
+    fetch = +refs/changes/*:refs/changes/origin/*
+[notes]
+    displayRef = refs/notes/*
+[merge]
+    tool = meld
